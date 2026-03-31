@@ -6,574 +6,567 @@
 <title>Spade Hair Studio — Delta, BC</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════
-   SPADE HAIR STUDIO — APEX EDITION
-   Delta, British Columbia
-═══════════════════════════════════════ */
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* Core palette */
-  --void:     #040404;
-  --ink:      #080807;
-  --surface:  #0e0e0d;
-  --lift:     #151413;
-  --panel:    #1a1917;
+  --void:    #030303;
+  --ink:     #070706;
+  --surface: #0d0d0c;
+  --lift:    #131312;
+  --panel:   #191917;
 
-  /* Bone whites */
-  --bone:     #FFF9EE;
-  --bone80:   rgba(255,249,238,0.80);
-  --bone50:   rgba(255,249,238,0.50);
-  --bone25:   rgba(255,249,238,0.25);
-  --bone10:   rgba(255,249,238,0.10);
-  --bone05:   rgba(255,249,238,0.05);
-  --bone03:   rgba(255,249,238,0.03);
+  --bone:    #F7F1E6;
+  --bone70:  rgba(247,241,230,0.70);
+  --bone40:  rgba(247,241,230,0.40);
+  --bone20:  rgba(247,241,230,0.20);
+  --bone08:  rgba(247,241,230,0.08);
+  --bone04:  rgba(247,241,230,0.04);
+  --bone02:  rgba(247,241,230,0.02);
 
-  /* Gold system */
-  --gold:     #C9A96E;
-  --goldL:    #DEC28A;
-  --goldD:    #A8874E;
-  --gold60:   rgba(201,169,110,0.60);
-  --gold30:   rgba(201,169,110,0.30);
-  --gold15:   rgba(201,169,110,0.15);
-  --gold08:   rgba(201,169,110,0.08);
-  --gold03:   rgba(201,169,110,0.03);
+  --gold:    #C4A15A;
+  --goldL:   #D4B472;
+  --goldD:   #A8864A;
+  --gold50:  rgba(196,161,90,0.50);
+  --gold25:  rgba(196,161,90,0.25);
+  --gold12:  rgba(196,161,90,0.12);
+  --gold06:  rgba(196,161,90,0.06);
+  --gold03:  rgba(196,161,90,0.03);
 
-  /* Borders */
-  --br:       rgba(255,249,238,0.07);
-  --brG:      rgba(201,169,110,0.18);
+  --rule:    rgba(247,241,230,0.06);
+  --ruleG:   rgba(196,161,90,0.14);
 
-  /* Timing */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
-  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease:    cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-s:  cubic-bezier(0.45, 0, 0.55, 1);
 }
 
-html { scroll-behavior: smooth; font-size: 16px }
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
   background: var(--void);
   color: var(--bone);
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-weight: 300;
   overflow-x: hidden;
   cursor: none;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ─── GRAIN ─── */
-body::before {
+/* ── GRAIN ── */
+body::after {
   content: '';
   position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.034;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
   pointer-events: none;
   z-index: 9990;
 }
 
-/* ─── CURSOR ─── */
+/* ── CURSOR ── */
 #cur {
   position: fixed;
-  width: 6px; height: 6px;
+  width: 5px; height: 5px;
   background: var(--gold);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), opacity 0.3s;
   will-change: left, top;
-  transition: transform 0.1s var(--ease-out), width 0.3s var(--ease-out), height 0.3s var(--ease-out), background 0.3s;
 }
-#cur.hover { width: 10px; height: 10px; background: var(--goldL); }
-#cur.click { transform: translate(-50%,-50%) scale(0.5); }
+#cur.hover { width: 8px; height: 8px; }
+#cur.click { opacity: 0.4; }
 
 #curR {
   position: fixed;
-  width: 36px; height: 36px;
-  border: 0.5px solid var(--gold30);
+  width: 32px; height: 32px;
+  border: 0.5px solid var(--gold25);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s var(--ease), height 0.5s var(--ease), border-color 0.4s, opacity 0.4s;
+  opacity: 0.5;
   will-change: left, top;
-  transition: width 0.5s var(--ease-out), height 0.5s var(--ease-out), border-color 0.4s, opacity 0.4s;
-  opacity: 0.6;
 }
-#curR.hover { width: 60px; height: 60px; border-color: var(--gold60); opacity: 0.9; }
-#curR.text { width: 2px; height: 28px; border-radius: 1px; border-color: var(--gold); opacity: 0.8; }
+#curR.hover { width: 52px; height: 52px; border-color: var(--gold50); opacity: 0.8; }
+#curR.text { width: 1.5px; height: 24px; border-radius: 1px; border-color: var(--gold); opacity: 0.7; }
 
-/* ─── LOADER ─── */
+/* ── LOADER ── */
 #loader {
   position: fixed; inset: 0;
   background: var(--void);
   z-index: 10000;
-  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px;
-  transition: opacity 1.2s var(--ease-out), visibility 1.2s;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 32px;
+  transition: opacity 1.4s var(--ease), visibility 1.4s;
 }
 #loader.gone { opacity: 0; visibility: hidden; pointer-events: none; }
 
-.l-spade {
-  font-family: 'Cormorant', serif;
-  font-size: 52px;
+.l-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
   color: var(--gold);
   opacity: 0;
-  transform: translateY(12px);
-  animation: lUp 0.9s var(--ease-out) 0.2s forwards;
-  filter: drop-shadow(0 0 24px var(--gold30));
+  transform: translateY(10px);
+  animation: fadeUp 1s var(--ease) 0.3s forwards;
 }
-.l-name {
-  font-size: 9px;
-  letter-spacing: 0.55em;
+.l-word {
+  font-size: 8px;
+  letter-spacing: 0.62em;
   text-transform: uppercase;
-  color: var(--bone25);
+  color: var(--bone20);
   opacity: 0;
-  animation: lUp 0.7s var(--ease-out) 0.7s forwards;
+  animation: fadeUp 0.8s var(--ease) 0.8s forwards;
 }
-.l-track {
-  width: 120px; height: 1px;
-  background: var(--bone03);
-  position: relative; overflow: hidden;
+.l-line {
+  width: 1px; height: 72px;
+  background: linear-gradient(to bottom, transparent, var(--gold50), transparent);
   opacity: 0;
-  animation: lUp 0.5s var(--ease-out) 0.5s forwards;
+  animation: fadeUp 0.6s var(--ease) 0.6s forwards, lineGrow 1.8s var(--ease) 1s forwards;
 }
-.l-track::after {
-  content: '';
-  position: absolute; top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  animation: lSweep 1.8s var(--ease-out) 0.9s forwards;
+@keyframes lineGrow {
+  from { transform: scaleY(0); transform-origin: top; }
+  to   { transform: scaleY(1); }
 }
-@keyframes lSweep { to { left: 100%; } }
-@keyframes lUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* ─── NAVIGATION ─── */
+/* ── NAV ── */
 nav {
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 32px 72px;
+  padding: 36px 80px;
   display: flex; align-items: center; justify-content: space-between;
-  transition: padding 0.6s var(--ease-out), background 0.6s, border-color 0.6s;
+  transition: padding 0.7s var(--ease), background 0.7s, border-color 0.7s;
   border-bottom: 1px solid transparent;
 }
-nav.sc {
-  padding: 18px 72px;
-  background: rgba(4,4,4,0.88);
-  backdrop-filter: blur(32px) saturate(180%);
-  -webkit-backdrop-filter: blur(32px) saturate(180%);
-  border-bottom-color: var(--br);
+nav.scrolled {
+  padding: 20px 80px;
+  background: rgba(3,3,3,0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom-color: var(--rule);
 }
 
-.nlogo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-.nmark {
-  font-size: 20px; color: var(--gold);
-  filter: drop-shadow(0 0 8px var(--gold30));
-  transition: filter 0.4s;
+.n-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.n-spade {
+  font-size: 17px; color: var(--gold);
+  opacity: 0.9;
+  transition: opacity 0.4s;
 }
-.nlogo:hover .nmark { filter: drop-shadow(0 0 16px var(--gold60)); }
-.nname {
-  font-family: 'Cormorant', serif;
-  font-size: 16px; letter-spacing: 0.14em;
-  color: var(--bone80); font-weight: 300;
+.n-logo:hover .n-spade { opacity: 1; }
+.n-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14.5px; letter-spacing: 0.18em;
+  color: var(--bone70); font-weight: 400;
 }
 
-.nlinks { display: flex; gap: 40px; list-style: none; }
-.nlinks a {
-  font-size: 9.5px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--bone25); text-decoration: none;
-  transition: color 0.4s var(--ease-out);
-  position: relative; padding-bottom: 2px;
+.n-links { display: flex; gap: 44px; list-style: none; }
+.n-links a {
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--bone20); text-decoration: none;
+  transition: color 0.4s var(--ease);
 }
-.nlinks a::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0;
-  width: 0; height: 0.5px;
-  background: var(--gold);
-  transition: width 0.5s var(--ease-out);
-}
-.nlinks a:hover { color: var(--bone80); }
-.nlinks a:hover::after { width: 100%; }
+.n-links a:hover { color: var(--bone70); }
 
-.nbook {
-  font-size: 9.5px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--gold); border: 0.5px solid var(--gold30);
-  padding: 12px 28px; text-decoration: none;
-  transition: background 0.4s var(--ease-out), color 0.4s, border-color 0.4s, box-shadow 0.4s;
-  position: relative; overflow: hidden;
+.n-book {
+  font-size: 8.5px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--bone40); border: 0.5px solid var(--rule);
+  padding: 11px 26px; text-decoration: none;
+  transition: color 0.4s var(--ease), border-color 0.4s;
 }
-.nbook::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: var(--gold);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.4s var(--ease-out);
-  z-index: -1;
-}
-.nbook:hover { color: var(--void); border-color: var(--gold); box-shadow: 0 0 32px var(--gold30); }
-.nbook:hover::before { transform: scaleX(1); }
+.n-book:hover { color: var(--gold); border-color: var(--gold25); }
 
-/* ─── HERO ─── */
+/* ── HERO ── */
 #hero {
   min-height: 100vh;
   position: relative;
-  display: flex; align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  padding: 0 80px 100px;
   overflow: hidden;
-  background: var(--void);
 }
 
 canvas#bg {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
-/* Cinematic vignette */
-#hero::after {
+/* Soft vignette — restrained */
+#hero::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 80% at 20% 50%, rgba(201,169,110,0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 100% at 100% 50%, rgba(0,0,0,0.6) 0%, transparent 70%),
-    radial-gradient(ellipse 100% 40% at 50% 100%, rgba(0,0,0,0.8) 0%, transparent 100%),
-    radial-gradient(ellipse 100% 30% at 50% 0%, rgba(0,0,0,0.5) 0%, transparent 100%);
+    radial-gradient(ellipse 70% 90% at 0% 60%, rgba(196,161,90,0.03) 0%, transparent 70%),
+    radial-gradient(ellipse 100% 50% at 50% 100%, rgba(0,0,0,0.7) 0%, transparent 100%),
+    radial-gradient(ellipse 100% 25% at 50% 0%, rgba(0,0,0,0.4) 0%, transparent 100%);
   pointer-events: none; z-index: 1;
 }
 
-/* Diagonal rule lines */
-.h-rules {
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    -52deg,
-    transparent, transparent 72px,
-    rgba(201,169,110,0.012) 72px, rgba(201,169,110,0.012) 73px
-  );
+/* Subtle structural line — right third */
+#hero::after {
+  content: '';
+  position: absolute;
+  right: 36%;
+  top: 20%;
+  bottom: 18%;
+  width: 0.5px;
+  background: linear-gradient(to bottom, transparent, var(--rule) 20%, var(--rule) 80%, transparent);
+  pointer-events: none; z-index: 2;
 }
 
-/* Giant typographic watermark */
+/* Giant number watermark — right side */
 .h-wm {
   position: absolute;
-  right: -80px; top: 50%;
+  right: -40px; top: 50%;
   transform: translateY(-50%);
-  font-family: 'Cormorant', serif;
-  font-size: clamp(320px, 42vw, 560px);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(280px, 38vw, 520px);
   font-weight: 300;
-  color: rgba(201,169,110,0.022);
+  color: rgba(196,161,90,0.018);
   line-height: 1;
   pointer-events: none; user-select: none;
-  will-change: transform;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.06em;
+  z-index: 1;
 }
 
-/* Hero content */
-.h-wrap {
-  position: relative; z-index: 2;
-  padding: 0 72px;
-  width: 100%;
+.h-left {
+  position: relative; z-index: 3;
   display: flex; flex-direction: column;
+  padding-top: 160px;
 }
 
 .h-eyebrow {
-  display: flex; align-items: center; gap: 18px;
-  font-size: 9px; letter-spacing: 0.55em;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 40px;
-  opacity: 0; transform: translateY(16px);
-  animation: lUp 0.9s var(--ease-out) 2.0s forwards;
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 48px;
+  opacity: 0; transform: translateY(12px);
+  animation: fadeUp 1s var(--ease) 2.1s forwards;
 }
-.h-eyebrow::before {
-  content: '';
-  width: 48px; height: 0.5px;
-  background: linear-gradient(90deg, var(--gold), transparent);
+.h-eyebrow-line {
+  width: 40px; height: 0.5px;
+  background: var(--gold50);
+}
+.h-eyebrow-text {
+  font-size: 8px; letter-spacing: 0.55em;
+  text-transform: uppercase; color: var(--gold);
+  font-weight: 400;
 }
 
 .h-title {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(80px, 10.5vw, 156px);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(78px, 9.5vw, 144px);
   font-weight: 300;
-  line-height: 0.90;
-  letter-spacing: -0.025em;
+  line-height: 0.88;
+  letter-spacing: -0.03em;
   color: var(--bone);
-  max-width: 900px;
-  opacity: 0; transform: translateY(36px);
-  animation: lUp 1.1s var(--ease-out) 2.1s forwards;
+  opacity: 0; transform: translateY(28px);
+  animation: fadeUp 1.2s var(--ease) 2.2s forwards;
 }
-.h-title em { font-style: italic; color: var(--bone50); }
-.h-title .au { color: var(--gold); position: relative; }
-.h-title .au::after {
+.h-title em {
+  font-style: italic;
+  color: var(--bone40);
+  display: block;
+}
+.h-title strong {
+  font-weight: 300;
+  color: var(--gold);
+  display: block;
+  position: relative;
+}
+.h-title strong::after {
   content: '';
-  position: absolute; bottom: 8px; left: 0;
-  width: 100%; height: 0.5px;
-  background: linear-gradient(90deg, var(--gold), transparent);
+  position: absolute;
+  bottom: 5px; left: 0;
+  width: 52%; height: 0.5px;
+  background: linear-gradient(90deg, var(--gold50), transparent);
 }
 
-.h-side {
-  position: absolute;
-  right: 72px; bottom: 96px;
-  max-width: 300px; text-align: right;
-  z-index: 2;
+.h-right {
+  position: relative; z-index: 3;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  gap: 40px;
   opacity: 0; transform: translateY(20px);
-  animation: lUp 0.9s var(--ease-out) 2.4s forwards;
+  animation: fadeUp 1s var(--ease) 2.5s forwards;
 }
+
 .h-desc {
-  font-size: 13.5px; line-height: 1.95;
-  color: var(--bone25); margin-bottom: 36px;
+  font-size: 13px; line-height: 2.0;
+  color: var(--bone20);
+  max-width: 260px;
+  text-align: right;
   letter-spacing: 0.01em;
 }
-.h-btns { display: flex; gap: 12px; justify-content: flex-end; }
 
-/* Buttons */
-.btn-g {
+.h-btns { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+
+.btn-primary {
   display: inline-block;
-  font-size: 9.5px; letter-spacing: 0.25em; text-transform: uppercase;
+  font-size: 8.5px; letter-spacing: 0.32em; text-transform: uppercase;
   background: var(--gold); color: var(--void);
-  padding: 15px 34px; text-decoration: none;
-  position: relative; overflow: hidden;
-  transition: box-shadow 0.5s var(--ease-out), transform 0.3s var(--ease-out);
+  padding: 14px 36px; text-decoration: none;
   font-weight: 400;
+  transition: box-shadow 0.6s var(--ease), transform 0.4s var(--ease);
 }
-.btn-g::before {
-  content: '';
-  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-  transition: left 0.6s var(--ease-out);
+.btn-primary:hover {
+  box-shadow: 0 0 40px var(--gold25), 0 0 80px var(--gold12);
+  transform: translateY(-2px);
 }
-.btn-g:hover { box-shadow: 0 0 48px var(--gold30), 0 0 96px var(--gold15); transform: translateY(-3px); }
-.btn-g:hover::before { left: 150%; }
 
-.btn-o {
+.btn-ghost {
   display: inline-block;
-  font-size: 9.5px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--bone25); border: 0.5px solid var(--br);
-  padding: 15px 30px; text-decoration: none;
-  transition: color 0.4s var(--ease-out), border-color 0.4s;
+  font-size: 8.5px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--bone20); border: 0.5px solid var(--rule);
+  padding: 14px 32px; text-decoration: none;
+  transition: color 0.4s var(--ease), border-color 0.4s;
 }
-.btn-o:hover { color: var(--bone80); border-color: var(--bone25); }
+.btn-ghost:hover { color: var(--bone40); border-color: var(--bone20); }
 
 /* Scroll indicator */
 .h-scroll {
-  position: absolute; bottom: 44px; left: 72px;
-  z-index: 2; display: flex; flex-direction: column;
-  align-items: flex-start; gap: 14px;
-  opacity: 0; animation: lUp 0.8s var(--ease-out) 3.0s forwards;
+  position: absolute; bottom: 48px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3; display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+  opacity: 0; animation: fadeUp 0.8s var(--ease) 3.2s forwards;
 }
-.h-scroll-lbl {
-  font-size: 7.5px; letter-spacing: 0.5em;
-  text-transform: uppercase; color: var(--bone25);
+.h-scroll-label {
+  font-size: 7px; letter-spacing: 0.55em;
+  text-transform: uppercase; color: var(--bone20);
+  writing-mode: horizontal-tb;
 }
-.h-scroll-bar {
-  width: 0.5px; height: 52px;
-  background: linear-gradient(to bottom, var(--gold60), transparent);
-  animation: scrollPulse 3s ease-in-out infinite;
-  transform-origin: top;
+.h-scroll-track {
+  width: 0.5px; height: 60px;
+  background: var(--rule);
+  position: relative; overflow: hidden;
 }
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
-  50% { opacity: 1; transform: scaleY(1); }
+.h-scroll-track::after {
+  content: '';
+  position: absolute; top: -100%; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollDrop 2.5s ease-in-out infinite 3.5s;
+}
+@keyframes scrollDrop {
+  0%   { top: -100%; opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
-/* ─── MARQUEE ─── */
-.mq-wrap {
+/* ── TICKER ── */
+.ticker {
   background: var(--surface);
-  border-top: 0.5px solid var(--br);
-  border-bottom: 0.5px solid var(--br);
-  padding: 20px 0; overflow: hidden;
+  border-top: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
+  padding: 18px 0; overflow: hidden;
   position: relative;
 }
-.mq-wrap::before, .mq-wrap::after {
+.ticker::before, .ticker::after {
   content: '';
-  position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
 }
-.mq-wrap::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
-.mq-wrap::after { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
-.mq-track { display: flex; animation: mq 36s linear infinite; width: max-content; }
-.mq-track:hover { animation-play-state: paused; }
-.mq-item {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 15px; letter-spacing: 0.06em;
-  color: var(--bone25); padding: 0 40px;
-  white-space: nowrap; border-right: 0.5px solid var(--br);
+.ticker::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+.ticker::after  { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+
+.ticker-track { display: flex; animation: ticker 40s linear infinite; width: max-content; }
+.ticker-track:hover { animation-play-state: paused; }
+
+.ticker-item {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13.5px; font-style: italic;
+  color: var(--bone20); padding: 0 44px;
+  white-space: nowrap;
+  display: flex; align-items: center; gap: 14px;
   transition: color 0.3s;
 }
-.mq-item:hover { color: var(--bone50); }
-.mq-dot { color: var(--gold); margin-right: 12px; font-style: normal; }
-@keyframes mq { to { transform: translateX(-50%); } }
+.ticker-item:hover { color: var(--bone40); }
+.ticker-dot { color: var(--gold); font-style: normal; font-size: 7px; opacity: 0.6; }
+@keyframes ticker { to { transform: translateX(-50%); } }
 
-/* ─── SECTION SYSTEM ─── */
-.sec { padding: 160px 72px; }
-.sec-lbl {
-  font-size: 8.5px; letter-spacing: 0.5em;
+/* ── SECTION BASE ── */
+.sec { padding: 140px 80px; }
+.sec-eyebrow {
+  font-size: 8px; letter-spacing: 0.55em;
   text-transform: uppercase; color: var(--gold);
-  display: block; margin-bottom: 20px;
+  opacity: 0.8; display: block; margin-bottom: 22px;
 }
-.sec-h {
-  font-family: 'Cormorant', serif;
-  font-size: clamp(52px, 5.8vw, 84px);
-  font-weight: 300; line-height: 0.97;
-  letter-spacing: -0.015em; color: var(--bone);
+.sec-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(48px, 5.2vw, 76px);
+  font-weight: 300; line-height: 0.96;
+  letter-spacing: -0.02em; color: var(--bone);
 }
-.sec-h em { font-style: italic; color: var(--bone50); }
+.sec-heading em { font-style: italic; color: var(--bone40); }
 
-/* ─── REVEAL SYSTEM ─── */
+/* ── REVEAL ── */
 .rv {
-  opacity: 0; transform: translateY(40px);
-  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
+  opacity: 0; transform: translateY(36px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
 }
 .rv.on { opacity: 1; transform: translateY(0); }
-.rvl {
-  opacity: 0; transform: translateX(-32px);
-  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
+.rv-l {
+  opacity: 0; transform: translateX(-28px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
 }
-.rvl.on { opacity: 1; transform: translateX(0); }
-.rvr {
-  opacity: 0; transform: translateX(32px);
-  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
+.rv-l.on { opacity: 1; transform: translateX(0); }
+.rv-r {
+  opacity: 0; transform: translateX(28px);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
 }
-.rvr.on { opacity: 1; transform: translateX(0); }
-.d1{transition-delay:0.08s} .d2{transition-delay:0.16s} .d3{transition-delay:0.24s}
-.d4{transition-delay:0.32s} .d5{transition-delay:0.40s} .d6{transition-delay:0.48s}
+.rv-r.on { opacity: 1; transform: translateX(0); }
 
-/* ─── SERVICES ─── */
-#services { background: var(--ink); padding-left: 0; padding-right: 0; padding-top: 120px; padding-bottom: 120px; }
+.d1 { transition-delay: 0.06s } .d2 { transition-delay: 0.12s }
+.d3 { transition-delay: 0.18s } .d4 { transition-delay: 0.24s }
+.d5 { transition-delay: 0.30s } .d6 { transition-delay: 0.36s }
+
+/* ── SERVICES ── */
+#services {
+  background: var(--ink);
+  padding: 120px 0;
+}
 
 .sv-head {
-  padding: 0 72px;
-  max-width: 1380px; margin: 0 auto 80px;
+  padding: 0 80px;
   display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 72px;
 }
-.sv-head-right {
-  font-size: 13px; line-height: 1.9;
-  color: var(--bone25); max-width: 280px; text-align: right;
+.sv-caption {
+  font-size: 12.5px; line-height: 1.95;
+  color: var(--bone20); max-width: 240px;
+  text-align: right; letter-spacing: 0.01em;
+}
+
+/* Single horizontal rule above grid */
+.sv-rule {
+  width: calc(100% - 160px);
+  margin: 0 80px 0;
+  height: 0.5px;
+  background: var(--rule);
 }
 
 .sv-grid {
-  max-width: 1380px; margin: 0 72px;
   display: grid; grid-template-columns: repeat(3, 1fr);
-  border: 0.5px solid var(--br);
-  position: relative;
-}
-/* Gold corner accent on the grid */
-.sv-grid::before {
-  content: '';
-  position: absolute; top: -1px; left: -1px;
-  width: 48px; height: 48px;
-  border-top: 0.5px solid var(--gold30);
-  border-left: 0.5px solid var(--gold30);
-  pointer-events: none; z-index: 1;
-}
-.sv-grid::after {
-  content: '';
-  position: absolute; bottom: -1px; right: -1px;
-  width: 48px; height: 48px;
-  border-bottom: 0.5px solid var(--gold30);
-  border-right: 0.5px solid var(--gold30);
-  pointer-events: none; z-index: 1;
+  margin: 0 80px;
+  border-left: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
 }
 
 .sv-card {
-  padding: 56px 48px;
-  border-right: 0.5px solid var(--br);
-  border-bottom: 0.5px solid var(--br);
+  padding: 52px 44px 48px;
+  border-top: 0.5px solid var(--rule);
+  border-right: 0.5px solid var(--rule);
   position: relative; overflow: hidden;
-  transition: background 0.6s var(--ease-out);
+  transition: background 0.7s var(--ease);
   cursor: default;
 }
-.sv-card:nth-child(3n) { border-right: none; }
-.sv-card:nth-child(n+4) { border-bottom: none; }
+.sv-card:hover { background: var(--surface); }
 
-/* Hover gold sweep line */
-.sv-card::before {
-  content: '';
-  position: absolute; left: 0; bottom: 0;
-  width: 0; height: 0.5px;
-  background: linear-gradient(90deg, var(--gold), var(--goldD), transparent);
-  transition: width 0.8s var(--ease-out);
-}
-/* Top glow on hover */
+/* Animated bottom line */
 .sv-card::after {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 0;
-  background: linear-gradient(to bottom, var(--gold05), transparent);
-  transition: height 0.6s var(--ease-out);
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 0.5px;
+  background: var(--gold50);
+  transition: width 0.9s var(--ease);
 }
-.sv-card:hover { background: var(--surface); }
-.sv-card:hover::before { width: 100%; }
-.sv-card:hover::after { height: 80px; }
+.sv-card:hover::after { width: 100%; }
 
-.sv-num {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 12px; color: var(--gold30);
-  display: block; margin-bottom: 32px;
-  letter-spacing: 0.1em;
-}
-.sv-name {
-  font-family: 'Cormorant', serif;
-  font-size: 32px; font-weight: 400;
-  color: var(--bone80); margin-bottom: 16px;
-  line-height: 1.05; letter-spacing: -0.01em;
+.sv-index {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 11px; color: var(--bone08);
+  display: block; margin-bottom: 36px;
+  letter-spacing: 0.08em;
   transition: color 0.4s;
 }
-.sv-card:hover .sv-name { color: var(--bone); }
-.sv-desc {
-  font-size: 12.5px; line-height: 1.9;
-  color: var(--bone25); margin-bottom: 32px;
+.sv-card:hover .sv-index { color: var(--gold25); }
+
+.sv-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 400;
+  color: var(--bone70); margin-bottom: 18px;
+  line-height: 1.08; letter-spacing: -0.01em;
+  transition: color 0.4s;
+}
+.sv-card:hover .sv-title { color: var(--bone); }
+
+.sv-body {
+  font-size: 12px; line-height: 1.95;
+  color: var(--bone20); margin-bottom: 36px;
   letter-spacing: 0.01em;
 }
-.sv-price {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 22px; color: var(--gold);
-  transition: color 0.4s;
-}
-.sv-card:hover .sv-price { color: var(--goldL); }
 
+.sv-from {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 20px; color: var(--gold);
+  opacity: 0.8;
+  transition: opacity 0.4s;
+}
+.sv-card:hover .sv-from { opacity: 1; }
+
+/* Arrow — top right, barely visible */
 .sv-arrow {
-  position: absolute; top: 48px; right: 48px;
-  font-size: 15px; color: var(--bone05);
-  transition: color 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  position: absolute; top: 44px; right: 44px;
+  font-size: 12px; color: var(--bone04);
+  transition: color 0.5s var(--ease), transform 0.5s var(--ease);
 }
-.sv-card:hover .sv-arrow { color: var(--gold30); transform: translate(4px, -4px); }
+.sv-card:hover .sv-arrow { color: var(--gold25); transform: translate(3px, -3px); }
 
-/* ─── ABOUT ─── */
-#about { padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
+/* ── ABOUT ── */
+#about {
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding: 0;
+}
 
 .ab-left {
   background: var(--surface);
-  padding: 130px 88px;
+  padding: 120px 80px;
   display: flex; flex-direction: column; justify-content: center;
-  border-right: 0.5px solid var(--br);
+  border-right: 0.5px solid var(--rule);
   position: relative; overflow: hidden;
 }
-/* Background ghost number */
+/* Faint background number */
 .ab-ghost {
-  position: absolute; right: -24px; bottom: -60px;
-  font-family: 'Cormorant', serif; font-weight: 300;
-  font-size: 280px; color: var(--gold03);
+  position: absolute; right: -10px; bottom: -40px;
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: 260px; color: var(--gold03);
   line-height: 1; pointer-events: none; user-select: none;
   letter-spacing: -0.05em;
 }
-.ab-rule { width: 52px; height: 0.5px; background: var(--gold30); margin: 36px 0; }
-.ab-p { font-size: 14.5px; line-height: 2.0; color: var(--bone25); margin-bottom: 14px; letter-spacing: 0.01em; }
+.ab-rule {
+  width: 44px; height: 0.5px;
+  background: var(--gold25);
+  margin: 32px 0;
+}
+.ab-p {
+  font-size: 13.5px; line-height: 2.05;
+  color: var(--bone20); margin-bottom: 12px; letter-spacing: 0.01em;
+}
 
 .ab-stats {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  margin-top: 64px; padding-top: 44px;
-  border-top: 0.5px solid var(--br);
-  gap: 0;
+  margin-top: 60px; padding-top: 40px;
+  border-top: 0.5px solid var(--rule);
 }
-.ab-stat { position: relative; }
-.ab-stat + .ab-stat { border-left: 0.5px solid var(--br); padding-left: 28px; }
-.ab-stat:first-child { padding-right: 28px; }
-.ab-stat:nth-child(2) { padding: 0 28px; }
+.ab-stat + .ab-stat { border-left: 0.5px solid var(--rule); padding-left: 24px; }
+.ab-stat:first-child { padding-right: 24px; }
+.ab-stat:nth-child(2) { padding: 0 24px; }
+
 .ab-n {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 54px; color: var(--gold); line-height: 1;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 48px; color: var(--gold); line-height: 1;
   letter-spacing: -0.02em;
 }
 .ab-l {
-  font-size: 8.5px; letter-spacing: 0.3em;
-  text-transform: uppercase; color: var(--bone25);
+  font-size: 8px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--bone20);
   margin-top: 10px;
 }
 
@@ -581,776 +574,775 @@ canvas#bg {
   background: var(--lift);
   display: flex; align-items: center; justify-content: center;
   padding: 80px;
-  min-height: 580px;
+  min-height: 560px;
   position: relative; overflow: hidden;
 }
-/* Subtle gold ambient glow */
 .ab-right::before {
   content: '';
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, var(--gold05) 0%, transparent 70%);
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, var(--gold03) 0%, transparent 70%);
   pointer-events: none;
 }
 
-/* ─── PROCESS ─── */
-#process { background: var(--ink); border-top: 0.5px solid var(--br); }
-.proc-inner { max-width: 1380px; margin: 0 auto; }
+/* ── PROCESS ── */
+#process {
+  background: var(--ink);
+  border-top: 0.5px solid var(--rule);
+  padding: 140px 80px;
+}
 
-.proc-steps {
+.proc-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  border: 0.5px solid var(--br);
-  margin-top: 80px;
-  position: relative;
+  border-left: 0.5px solid var(--rule);
+  margin-top: 72px;
 }
+
 .proc-step {
-  padding: 52px 44px;
-  border-right: 0.5px solid var(--br);
+  padding: 48px 40px;
+  border-top: 0.5px solid var(--rule);
+  border-right: 0.5px solid var(--rule);
+  border-bottom: 0.5px solid var(--rule);
   position: relative; overflow: hidden;
-  transition: background 0.5s var(--ease-out);
+  transition: background 0.5s var(--ease);
 }
-.proc-step:last-child { border-right: none; }
 .proc-step:hover { background: var(--surface); }
-/* Animated top bar on hover */
+
+/* Gold thread on hover */
 .proc-step::before {
   content: '';
   position: absolute; top: 0; left: 0; right: 0;
   height: 0.5px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  transform: scaleX(0);
-  transition: transform 0.6s var(--ease-out);
+  background: linear-gradient(90deg, transparent, var(--gold50), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.7s var(--ease);
 }
 .proc-step:hover::before { transform: scaleX(1); }
+
 .proc-n {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 64px; color: var(--bone03);
-  line-height: 1; margin-bottom: 24px;
-  display: block; letter-spacing: -0.02em;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 60px; color: var(--bone02);
+  line-height: 1; margin-bottom: 20px;
+  display: block; letter-spacing: -0.03em;
   transition: color 0.4s;
 }
-.proc-step:hover .proc-n { color: var(--gold08); }
+.proc-step:hover .proc-n { color: var(--gold06); }
 .proc-t {
-  font-family: 'Cormorant', serif;
-  font-size: 24px; font-weight: 400;
-  color: var(--bone80); margin-bottom: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400;
+  color: var(--bone70); margin-bottom: 14px;
   letter-spacing: -0.01em;
 }
-.proc-d { font-size: 12.5px; line-height: 1.85; color: var(--bone25); letter-spacing: 0.01em; }
+.proc-d { font-size: 12px; line-height: 1.9; color: var(--bone20); }
 
-/* ─── GALLERY ─── */
-#gallery { background: var(--void); padding: 160px 0; }
-.gal-head { padding: 0 72px; max-width: 1380px; margin: 0 auto 64px; }
+/* ── GALLERY ── */
+#gallery { background: var(--void); padding: 140px 0; }
+.gal-head { padding: 0 80px; margin-bottom: 60px; }
 
 .gal-grid {
   display: grid;
-  grid-template-columns: 2.2fr 1fr 1fr;
-  grid-template-rows: 420px 260px;
-  gap: 2px;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 400px 260px;
+  gap: 1.5px;
 }
-.g-item { position: relative; overflow: hidden; cursor: pointer; }
-.g-item:first-child { grid-row: span 2; }
-.g-fill {
+.g-cell { position: relative; overflow: hidden; cursor: pointer; }
+.g-cell:first-child { grid-row: span 2; }
+
+.g-bg {
   position: absolute; inset: 0;
-  transition: transform 0.9s var(--ease-out);
+  transition: transform 1s var(--ease);
   will-change: transform;
 }
-.g-item:hover .g-fill { transform: scale(1.05); }
+.g-cell:hover .g-bg { transform: scale(1.04); }
 
-/* Rich gradient backgrounds — no images */
-.gf1 { background: linear-gradient(155deg, #1C1408 0%, #0A0804 50%, #141008 100%); }
-.gf2 { background: linear-gradient(165deg, #14100C 0%, #0C0906 100%); }
-.gf3 { background: linear-gradient(135deg, #181410 0%, #0E0B08 100%); }
-.gf4 { background: linear-gradient(152deg, #121008 0%, #0C0A06 100%); }
-.gf5 { background: linear-gradient(142deg, #161210 0%, #100D0A 100%); }
+/* Dark rich tones — each subtly different */
+.gb1 { background: linear-gradient(145deg, #1A1308 0%, #090806 50%, #141009 100%); }
+.gb2 { background: linear-gradient(162deg, #120E0A 0%, #0B0806 100%); }
+.gb3 { background: linear-gradient(128deg, #161210 0%, #0E0B08 100%); }
+.gb4 { background: linear-gradient(150deg, #111008 0%, #0C0906 100%); }
+.gb5 { background: linear-gradient(140deg, #141110 0%, #100E0C 100%); }
 
-.g-pat { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-/* Hover overlay */
-.g-over {
+.g-pattern { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+.g-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 40%, transparent 70%);
-  opacity: 0; transition: opacity 0.6s var(--ease-out);
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 50%, transparent 80%);
+  opacity: 0; transition: opacity 0.6s var(--ease);
 }
-.g-item:hover .g-over { opacity: 1; }
+.g-cell:hover .g-overlay { opacity: 1; }
 
-/* Gold border reveal on hover */
-.g-item::before {
+/* Gold border on hover */
+.g-cell::after {
   content: '';
   position: absolute; inset: 0;
-  border: 0.5px solid var(--gold30);
+  border: 0.5px solid var(--gold25);
   opacity: 0; z-index: 3;
-  transition: opacity 0.5s var(--ease-out);
+  transition: opacity 0.5s var(--ease);
+  pointer-events: none;
 }
-.g-item:hover::before { opacity: 1; }
+.g-cell:hover::after { opacity: 1; }
 
-.g-lbl {
-  position: absolute; bottom: 28px; left: 28px;
-  font-size: 9px; letter-spacing: 0.3em;
+.g-label {
+  position: absolute; bottom: 24px; left: 28px;
+  font-size: 8px; letter-spacing: 0.35em;
   text-transform: uppercase; color: var(--gold);
-  opacity: 0; transform: translateY(10px);
-  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
   z-index: 4;
 }
-.g-item:hover .g-lbl { opacity: 1; transform: translateY(0); }
+.g-cell:hover .g-label { opacity: 1; transform: translateY(0); }
 
-.gal-ig {
-  text-align: center; margin-top: 40px;
-  font-size: 10px; letter-spacing: 0.25em;
-  text-transform: uppercase; color: var(--bone25);
-  padding: 0 72px;
+.gal-footer {
+  text-align: center; margin-top: 36px;
+  font-size: 9.5px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--bone20);
+  padding: 0 80px;
 }
-.gal-ig a { color: var(--gold); text-decoration: none; transition: color 0.3s; }
-.gal-ig a:hover { color: var(--goldL); }
+.gal-footer a { color: var(--gold); text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
+.gal-footer a:hover { opacity: 1; }
 
-/* ─── TESTIMONIALS ─── */
-#testimonials { background: var(--surface); border-top: 0.5px solid var(--br); }
-.t-wrap { max-width: 1100px; margin: 0 auto; text-align: center; }
+/* ── TESTIMONIALS ── */
+#testimonials {
+  background: var(--surface);
+  border-top: 0.5px solid var(--rule);
+  padding: 140px 80px;
+}
 
-.t-slides-wrap { position: relative; margin-top: 80px; overflow: hidden; }
+.t-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
 
-/* Fade edges */
-.t-slides-wrap::before, .t-slides-wrap::after {
+.t-slider-wrap { position: relative; margin-top: 80px; overflow: hidden; }
+.t-slider-wrap::before, .t-slider-wrap::after {
   content: '';
-  position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+  position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
 }
-.t-slides-wrap::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
-.t-slides-wrap::after { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+.t-slider-wrap::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+.t-slider-wrap::after  { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
 
-.t-slides { display: flex; transition: transform 0.9s var(--ease-out); }
+.t-track { display: flex; transition: transform 0.9s var(--ease); }
+
 .t-slide {
-  min-width: 100%; padding: 0 100px;
-  display: flex; flex-direction: column; align-items: center; gap: 28px;
+  min-width: 100%; padding: 0 80px;
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
 }
-.t-q {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 108px; color: var(--gold15); line-height: 0.5;
-  transition: color 0.4s;
+
+.t-open-quote {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 90px; color: var(--gold12); line-height: 0.5;
 }
-.t-stars { font-size: 13px; letter-spacing: 5px; color: var(--gold); }
+.t-stars { font-size: 11px; letter-spacing: 5px; color: var(--gold); opacity: 0.7; }
 .t-body {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: clamp(22px, 2.4vw, 28px); line-height: 1.58;
-  color: var(--bone50); max-width: 740px; font-weight: 300;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(20px, 2.2vw, 25px); line-height: 1.62;
+  color: var(--bone40); max-width: 680px; font-weight: 300;
   letter-spacing: -0.01em;
 }
-.t-auth {
-  font-size: 8.5px; letter-spacing: 0.38em;
-  text-transform: uppercase; color: var(--bone25);
-  display: flex; align-items: center; gap: 18px;
+.t-author {
+  font-size: 8px; letter-spacing: 0.45em;
+  text-transform: uppercase; color: var(--bone20);
+  display: flex; align-items: center; gap: 20px;
 }
-.t-auth::before, .t-auth::after {
+.t-author::before, .t-author::after {
   content: '';
-  display: block; width: 32px; height: 0.5px;
-  background: linear-gradient(90deg, transparent, var(--gold30), transparent);
+  display: block; width: 28px; height: 0.5px;
+  background: linear-gradient(90deg, transparent, var(--gold25), transparent);
 }
 
-.t-dots { display: flex; justify-content: center; gap: 12px; margin-top: 56px; }
+.t-dots {
+  display: flex; justify-content: center; gap: 10px; margin-top: 52px;
+}
 .t-dot {
   width: 4px; height: 4px; border-radius: 50%;
-  background: var(--bone10); border: none; cursor: pointer;
-  transition: background 0.4s, transform 0.4s var(--ease-back), width 0.4s var(--ease-out);
+  background: var(--bone08); border: none; cursor: pointer;
+  transition: background 0.4s, transform 0.4s var(--ease), width 0.4s var(--ease);
 }
-.t-dot.on { background: var(--gold); transform: scale(1.5); width: 16px; border-radius: 2px; }
+.t-dot.active { background: var(--gold); transform: scale(1.3); width: 14px; border-radius: 2px; }
 
-.t-nav { display: flex; justify-content: center; gap: 10px; margin-top: 28px; }
+.t-nav { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
 .t-btn {
-  width: 46px; height: 46px; background: transparent;
-  border: 0.5px solid var(--br); color: var(--bone25);
-  font-size: 15px; cursor: pointer;
+  width: 42px; height: 42px; background: transparent;
+  border: 0.5px solid var(--rule); color: var(--bone20);
+  font-size: 14px; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  transition: border-color 0.4s var(--ease-out), color 0.4s, background 0.4s;
+  transition: border-color 0.4s, color 0.4s;
 }
-.t-btn:hover { border-color: var(--gold30); color: var(--gold); background: var(--gold05); }
+.t-btn:hover { border-color: var(--gold25); color: var(--gold); }
 
-/* ─── BOOKING ─── */
-#booking { background: var(--void); position: relative; overflow: hidden; }
+/* ── BOOKING ── */
+#booking {
+  background: var(--void);
+  padding: 160px 80px;
+  position: relative; overflow: hidden;
+}
 
-/* Layered glow system */
-.bk-glow-1 {
+/* Restrained ambient — single soft glow */
+.bk-ambient {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 800px; height: 500px;
-  background: radial-gradient(ellipse, var(--gold05) 0%, transparent 65%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, var(--gold03) 0%, transparent 70%);
   pointer-events: none;
-  animation: glowPulse 6s ease-in-out infinite;
+  animation: breathe 7s ease-in-out infinite;
 }
-.bk-glow-2 {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px; height: 300px;
-  background: radial-gradient(ellipse, var(--gold08) 0%, transparent 65%);
-  pointer-events: none;
-  animation: glowPulse 6s ease-in-out infinite 1s;
-}
-@keyframes glowPulse {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.95); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+@keyframes breathe {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
+  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.05); }
 }
 
-/* Orbiting rings */
+/* Single orbiting ring */
 .bk-ring {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%, -50%);
+  width: 640px; height: 400px;
+  border: 0.5px solid var(--gold12);
   border-radius: 50%;
-  border: 0.5px solid var(--gold15);
   pointer-events: none;
-  animation: ringBreath 5s ease-in-out infinite;
-}
-.bk-ring-1 { width: 580px; height: 580px; }
-.bk-ring-2 { width: 800px; height: 800px; border-color: var(--gold08); animation-delay: 0.8s; }
-.bk-ring-3 { width: 1040px; height: 1040px; border-color: var(--gold03); animation-delay: 1.6s; }
-@keyframes ringBreath {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.97); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  animation: breathe 7s ease-in-out infinite 0.5s;
 }
 
-.bk-wrap { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; text-align: center; }
-.bk-h {
-  font-family: 'Cormorant', serif; font-weight: 300;
-  font-size: clamp(56px, 7.5vw, 108px);
-  line-height: 0.93; letter-spacing: -0.025em;
-  color: var(--bone); margin-bottom: 24px;
+.bk-inner {
+  position: relative; z-index: 1;
+  max-width: 760px; margin: 0 auto; text-align: center;
 }
-.bk-h em { font-style: italic; color: var(--gold); }
+
+.bk-heading {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.92; letter-spacing: -0.03em;
+  color: var(--bone); margin-bottom: 22px;
+}
+.bk-heading em { font-style: italic; color: var(--gold); }
+
 .bk-sub {
-  font-size: 14px; line-height: 1.95;
-  color: var(--bone25); margin-bottom: 60px; letter-spacing: 0.01em;
+  font-size: 13px; line-height: 2.0;
+  color: var(--bone20); margin-bottom: 56px;
 }
 
 .bk-cta {
   display: inline-block;
-  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold); border: 0.5px solid var(--gold30);
-  padding: 20px 64px; text-decoration: none;
+  font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--gold); border: 0.5px solid var(--gold25);
+  padding: 18px 56px; text-decoration: none;
   position: relative; overflow: hidden;
-  transition: color 0.5s var(--ease-out), box-shadow 0.5s;
+  transition: color 0.5s var(--ease), box-shadow 0.5s;
 }
 .bk-cta::before {
   content: '';
   position: absolute; inset: 0;
   background: var(--gold);
   transform: scaleX(0); transform-origin: left;
-  transition: transform 0.5s var(--ease-out); z-index: -1;
+  transition: transform 0.5s var(--ease); z-index: -1;
 }
-.bk-cta:hover { color: var(--void); box-shadow: 0 0 64px var(--gold30); }
+.bk-cta:hover { color: var(--void); box-shadow: 0 0 48px var(--gold25); }
 .bk-cta:hover::before { transform: scaleX(1); }
 
-.bk-details {
-  display: flex; gap: 0; justify-content: center;
-  margin-top: 64px; padding-top: 64px;
-  border-top: 0.5px solid var(--br);
-}
-.bk-det {
-  flex: 1; max-width: 220px;
-  padding: 0 32px;
-  border-right: 0.5px solid var(--br);
+.bk-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  margin-top: 72px; padding-top: 56px;
+  border-top: 0.5px solid var(--rule);
   text-align: center;
 }
-.bk-det:last-child { border-right: none; }
-.bk-dlbl {
-  font-size: 8px; letter-spacing: 0.45em;
-  text-transform: uppercase; color: var(--gold30);
-  display: block; margin-bottom: 10px;
-}
-.bk-dval { font-size: 14px; color: var(--bone50); letter-spacing: 0.01em; }
+.bk-item { padding: 0 24px; }
+.bk-item + .bk-item { border-left: 0.5px solid var(--rule); }
 
-/* ─── FOOTER ─── */
+.bk-label {
+  font-size: 7.5px; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: 0.5; display: block; margin-bottom: 10px;
+}
+.bk-value { font-size: 13px; color: var(--bone40); letter-spacing: 0.01em; }
+
+/* ── FOOTER ── */
 footer {
   background: var(--ink);
-  border-top: 0.5px solid var(--br);
-  padding: 88px 72px 44px;
+  border-top: 0.5px solid var(--rule);
+  padding: 80px 80px 40px;
 }
-.ft-top {
-  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 56px; padding-bottom: 72px;
-  border-bottom: 0.5px solid var(--br);
+
+.ft-grid {
+  display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 64px;
+  border-bottom: 0.5px solid var(--rule);
 }
-.ft-brand {
-  font-family: 'Cormorant', serif; font-size: 21px;
-  color: var(--bone80); letter-spacing: 0.12em;
+
+.ft-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; letter-spacing: 0.16em;
+  color: var(--bone70);
   display: flex; align-items: center; gap: 10px;
-  margin-bottom: 12px; text-decoration: none;
+  margin-bottom: 10px; text-decoration: none;
   transition: color 0.3s;
 }
-.ft-brand span { color: var(--gold); filter: drop-shadow(0 0 6px var(--gold30)); }
-.ft-brand:hover { color: var(--bone); }
-.ft-tag {
-  font-family: 'Cormorant', serif; font-style: italic;
-  font-size: 15px; color: var(--bone25); margin-bottom: 32px;
+.ft-logo span { color: var(--gold); }
+.ft-logo:hover { color: var(--bone); }
+
+.ft-tagline {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 13px; color: var(--bone20); margin-bottom: 28px;
 }
-.ft-socs { display: flex; gap: 8px; }
+.ft-socials { display: flex; gap: 6px; }
 .ft-soc {
-  width: 36px; height: 36px;
-  border: 0.5px solid var(--br);
+  width: 34px; height: 34px;
+  border: 0.5px solid var(--rule);
   display: flex; align-items: center; justify-content: center;
-  color: var(--bone25); text-decoration: none;
-  font-size: 10.5px; letter-spacing: 0.05em;
-  transition: border-color 0.4s, color 0.4s, background 0.4s;
+  color: var(--bone20); text-decoration: none;
+  font-size: 9.5px; letter-spacing: 0.04em;
+  transition: border-color 0.4s, color 0.4s;
 }
-.ft-soc:hover { border-color: var(--gold30); color: var(--gold); background: var(--gold05); }
+.ft-soc:hover { border-color: var(--gold25); color: var(--gold); }
+
 .ft-col h5 {
-  font-size: 8px; letter-spacing: 0.45em;
-  text-transform: uppercase; color: var(--gold30); margin-bottom: 22px;
+  font-size: 7.5px; letter-spacing: 0.48em;
+  text-transform: uppercase; color: var(--gold);
+  opacity: 0.5; margin-bottom: 20px;
 }
 .ft-col ul { list-style: none; }
-.ft-col ul li { margin-bottom: 13px; }
+.ft-col ul li { margin-bottom: 12px; }
 .ft-col ul li a {
-  font-size: 13px; color: var(--bone25);
+  font-size: 12.5px; color: var(--bone20);
   text-decoration: none;
   transition: color 0.3s; letter-spacing: 0.01em;
 }
-.ft-col ul li a:hover { color: var(--bone80); }
-.ft-col p { font-size: 13px; color: var(--bone25); line-height: 2.0; }
-.ft-bot {
-  padding-top: 28px;
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 12px;
-}
-.ft-copy { font-size: 11px; color: var(--bone10); letter-spacing: 0.04em; }
-.ft-rating { font-size: 11.5px; color: var(--gold30); letter-spacing: 0.08em; }
+.ft-col ul li a:hover { color: var(--bone70); }
+.ft-col p { font-size: 12.5px; color: var(--bone20); line-height: 2.05; }
 
-/* ─── RESPONSIVE ─── */
+.ft-bottom {
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 10px;
+}
+.ft-copy { font-size: 10.5px; color: var(--bone08); letter-spacing: 0.04em; }
+.ft-rating { font-size: 10.5px; color: var(--gold); opacity: 0.35; letter-spacing: 0.1em; }
+
+/* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   nav { padding: 20px 28px; }
-  nav.sc { padding: 14px 28px; }
-  .nlinks { display: none; }
-  .sec { padding: 100px 28px; }
-  #about { grid-template-columns: 1fr; }
-  .ab-left, .ab-right { padding: 80px 36px; }
+  nav.scrolled { padding: 14px 28px; }
+  .n-links { display: none; }
+
+  #hero { grid-template-columns: 1fr; padding: 140px 28px 80px; }
+  .h-right { align-items: flex-start; }
+  .h-desc { text-align: left; max-width: 320px; }
+  #hero::after { display: none; }
+
+  .sec { padding: 90px 28px; }
+  #services { padding: 90px 0; }
+  .sv-head { padding: 0 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sv-caption { text-align: left; }
+  .sv-rule { width: calc(100% - 56px); margin: 0 28px; }
   .sv-grid { margin: 0 28px; grid-template-columns: 1fr; }
-  .sv-card { border-right: none; }
-  .sv-card:nth-child(n+4) { border-bottom: 0.5px solid var(--br); }
-  .sv-card:last-child { border-bottom: none; }
-  .proc-steps { grid-template-columns: 1fr 1fr; }
-  .gal-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 280px 280px 280px; }
-  .g-item:first-child { grid-row: span 1; }
-  .h-wrap { padding: 0 28px; }
-  .h-title { font-size: 72px; }
-  .h-side { position: static; max-width: 100%; text-align: left; padding: 0 28px 100px; }
-  .h-btns { justify-content: flex-start; }
-  .h-scroll { left: 28px; }
-  .sv-head { padding: 0 28px; flex-direction: column; align-items: flex-start; gap: 20px; }
-  .sv-head-right { text-align: left; }
-  footer { padding: 64px 28px 36px; }
-  .ft-top { grid-template-columns: 1fr 1fr; }
-  .bk-details { flex-wrap: wrap; }
-  .bk-det { min-width: 160px; border-right: none; border-bottom: 0.5px solid var(--br); padding: 16px 0; }
-  .bk-det:last-child { border-bottom: none; }
-  .t-slide { padding: 0 32px; }
+
+  #about { grid-template-columns: 1fr; }
+  .ab-left { padding: 80px 28px; }
+  .ab-right { padding: 60px 28px; min-height: 380px; }
+
+  #process { padding: 90px 28px; }
+  .proc-grid { grid-template-columns: 1fr 1fr; }
+
+  #gallery { padding: 90px 0; }
   .gal-head { padding: 0 28px; }
-  .gal-ig { padding: 0 28px; }
+  .gal-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 260px 200px; }
+  .g-cell:first-child { grid-row: span 1; }
+  .gal-footer { padding: 0 28px; }
+
+  #testimonials { padding: 90px 28px; }
+  .t-slide { padding: 0 24px; }
+
+  #booking { padding: 100px 28px; }
+  .bk-meta { grid-template-columns: 1fr; gap: 24px; }
+  .bk-item + .bk-item { border-left: none; border-top: 0.5px solid var(--rule); padding-top: 24px; }
+
+  footer { padding: 60px 28px 36px; }
+  .ft-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
+
 <div id="cur"></div>
 <div id="curR"></div>
 
-<!-- ── LOADER ── -->
+<!-- LOADER -->
 <div id="loader">
-  <div class="l-spade">♠</div>
-  <div class="l-track"></div>
-  <div class="l-name">Spade Hair Studio</div>
+  <div class="l-mark">♠</div>
+  <div class="l-line"></div>
+  <div class="l-word">Spade Hair Studio</div>
 </div>
 
-<!-- ── NAVIGATION ── -->
+<!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nlogo">
-    <span class="nmark">♠</span>
-    <span class="nname">Spade Hair Studio</span>
+  <a href="#" class="n-logo">
+    <span class="n-spade">♠</span>
+    <span class="n-name">Spade Hair Studio</span>
   </a>
-  <ul class="nlinks">
+  <ul class="n-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">Studio</a></li>
     <li><a href="#gallery">Work</a></li>
     <li><a href="#testimonials">Reviews</a></li>
   </ul>
-  <a href="tel:7786819005" class="nbook">Book Now</a>
+  <a href="tel:7786819005" class="n-book">Book Now</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section id="hero">
   <canvas id="bg"></canvas>
-  <div class="h-rules"></div>
   <div class="h-wm" id="hwm">♠</div>
 
-  <div class="h-wrap">
-    <div class="h-eyebrow">Delta · British Columbia · Est. 2024</div>
+  <div class="h-left">
+    <div class="h-eyebrow">
+      <div class="h-eyebrow-line"></div>
+      <span class="h-eyebrow-text">Delta · British Columbia · Est. 2024</span>
+    </div>
     <h1 class="h-title">
       Precision<br>
       <em>Cuts.</em><br>
-      <span class="au">Elevated</span><br>
+      <strong>Elevated</strong><br>
       Style.
     </h1>
   </div>
 
-  <div class="h-side">
+  <div class="h-right">
     <p class="h-desc">Delta's most refined grooming studio. Where precision becomes art and every visit redefines your standard.</p>
     <div class="h-btns">
-      <a href="tel:7786819005" class="btn-g">Book Now</a>
-      <a href="#services" class="btn-o">Services</a>
+      <a href="tel:7786819005" class="btn-primary">Book Now</a>
+      <a href="#services" class="btn-ghost">View Services</a>
     </div>
   </div>
 
   <div class="h-scroll">
-    <span class="h-scroll-lbl">Discover</span>
-    <div class="h-scroll-bar"></div>
+    <span class="h-scroll-label">Scroll</span>
+    <div class="h-scroll-track"></div>
   </div>
 </section>
 
-<!-- ── MARQUEE ── -->
-<div class="mq-wrap">
-  <div class="mq-track">
-    <span class="mq-item"><span class="mq-dot">♠</span>Precision Haircuts</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Signature Fades</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Hair Colour &amp; Highlights</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Beard Grooming</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Nanoplastia &amp; Keratin</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>4.8 Stars · 221 Reviews</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Sunshine Hills · Delta, BC</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Precision Haircuts</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Signature Fades</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Hair Colour &amp; Highlights</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Beard Grooming</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Nanoplastia &amp; Keratin</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>4.8 Stars · 221 Reviews</span>
-    <span class="mq-item"><span class="mq-dot">♠</span>Sunshine Hills · Delta, BC</span>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Precision Haircuts</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Signature Fades</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Hair Colour &amp; Highlights</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Beard Grooming</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Nanoplastia &amp; Keratin</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>4.8 Stars · 221 Reviews</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Sunshine Hills · Delta, BC</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Precision Haircuts</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Signature Fades</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Hair Colour &amp; Highlights</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Beard Grooming</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Nanoplastia &amp; Keratin</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>4.8 Stars · 221 Reviews</span>
+    <span class="ticker-item"><span class="ticker-dot">◆</span>Sunshine Hills · Delta, BC</span>
   </div>
 </div>
 
-<!-- ── SERVICES ── -->
-<section id="services" class="sec">
+<!-- SERVICES -->
+<section id="services">
   <div class="sv-head rv">
     <div>
-      <span class="sec-lbl">What we offer</span>
-      <h2 class="sec-h">Our <em>Services</em></h2>
+      <span class="sec-eyebrow">What we offer</span>
+      <h2 class="sec-heading">Our <em>Services</em></h2>
     </div>
-    <p class="sv-head-right">Every service is a craft.<br>Every visit, an experience<br>you will not forget.</p>
+    <p class="sv-caption">Every service is a craft.<br>Every visit, an experience<br>you will not forget.</p>
   </div>
+  <div class="sv-rule"></div>
   <div class="sv-grid">
     <div class="sv-card rv d1">
-      <span class="sv-num">01</span>
+      <span class="sv-index">01</span>
       <span class="sv-arrow">↗</span>
-      <h3 class="sv-name">Precision<br>Haircuts</h3>
-      <p class="sv-desc">Scissor or clipper cuts engineered to your face shape, texture, and lifestyle. Classic or contemporary — always exact.</p>
-      <div class="sv-price">From $35</div>
+      <h3 class="sv-title">Precision<br>Haircuts</h3>
+      <p class="sv-body">Scissor or clipper cuts engineered to your face shape, texture, and lifestyle. Classic or contemporary — always exact.</p>
+      <div class="sv-from">From $35</div>
     </div>
     <div class="sv-card rv d2">
-      <span class="sv-num">02</span>
+      <span class="sv-index">02</span>
       <span class="sv-arrow">↗</span>
-      <h3 class="sv-name">Signature<br>Fades</h3>
-      <p class="sv-desc">Skin, low, mid, or high — executed with surgical precision. Blended to absolute perfection, every single time.</p>
-      <div class="sv-price">From $30</div>
+      <h3 class="sv-title">Signature<br>Fades</h3>
+      <p class="sv-body">Skin, low, mid, or high — executed with surgical precision. Blended to absolute perfection, every single time.</p>
+      <div class="sv-from">From $30</div>
     </div>
     <div class="sv-card rv d3">
-      <span class="sv-num">03</span>
+      <span class="sv-index">03</span>
       <span class="sv-arrow">↗</span>
-      <h3 class="sv-name">Hair Colour<br>&amp; Highlights</h3>
-      <p class="sv-desc">Balayage, highlights, full colour, and toning — crafted to complement your complexion and reflect who you are.</p>
-      <div class="sv-price">From $80</div>
+      <h3 class="sv-title">Hair Colour<br>&amp; Highlights</h3>
+      <p class="sv-body">Balayage, highlights, full colour, and toning — crafted to complement your complexion and reflect who you are.</p>
+      <div class="sv-from">From $80</div>
     </div>
     <div class="sv-card rv d1">
-      <span class="sv-num">04</span>
+      <span class="sv-index">04</span>
       <span class="sv-arrow">↗</span>
-      <h3 class="sv-name">Beard<br>Grooming</h3>
-      <p class="sv-desc">Shape, sculpt, hot towel — a full beard service as meticulous and considered as the cut above it.</p>
-      <div class="sv-price">From $20</div>
+      <h3 class="sv-title">Beard<br>Grooming</h3>
+      <p class="sv-body">Shape, sculpt, hot towel — a full beard service as meticulous and considered as the cut above it.</p>
+      <div class="sv-from">From $20</div>
     </div>
     <div class="sv-card rv d2">
-      <span class="sv-num">05</span>
+      <span class="sv-index">05</span>
       <span class="sv-arrow">↗</span>
-      <h3 class="sv-name">Styling &amp;<br>Blowouts</h3>
-      <p class="sv-desc">Texturizing, blowouts, and editorial finishing. Leave looking like the absolute finest version of yourself.</p>
-      <div class="sv-price">From $25</div>
+      <h3 class="sv-title">Styling &amp;<br>Blowouts</h3>
+      <p class="sv-body">Texturizing, blowouts, and editorial finishing. Leave looking like the absolute finest version of yourself.</p>
+      <div class="sv-from">From $25</div>
     </div>
     <div class="sv-card rv d3">
-      <span class="sv-num">06</span>
+      <span class="sv-index">06</span>
       <span class="sv-arrow">↗</span>
-      <h3 class="sv-name">Nanoplastia<br>&amp; Keratin</h3>
-      <p class="sv-desc">Transformative smoothening treatments. Frizz-free, silky, and long-lasting results that speak for themselves.</p>
-      <div class="sv-price">From $120</div>
+      <h3 class="sv-title">Nanoplastia<br>&amp; Keratin</h3>
+      <p class="sv-body">Transformative smoothening treatments. Frizz-free, silky, and long-lasting results that speak for themselves.</p>
+      <div class="sv-from">From $120</div>
     </div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="about">
-  <div class="ab-left rvl">
+  <div class="ab-left rv-l">
     <div class="ab-ghost">4.8</div>
-    <span class="sec-lbl">The Studio</span>
-    <h2 class="sec-h">Crafted<br>with <em>Intent</em></h2>
+    <span class="sec-eyebrow">The Studio</span>
+    <h2 class="sec-heading">Crafted<br>with <em>Intent</em></h2>
     <div class="ab-rule"></div>
     <p class="ab-p">Spade Hair Studio was built on a single, uncompromising belief — that every person who sits in our chair deserves to leave feeling genuinely, undeniably elevated. We are artists, not just stylists.</p>
     <p class="ab-p">Located in Sunshine Hills, Delta BC. We listen first. We create second. We never rush a single thing.</p>
     <div class="ab-stats">
       <div class="ab-stat">
         <div class="ab-n">221+</div>
-        <div class="ab-l">5-star reviews</div>
+        <div class="ab-l">Reviews</div>
       </div>
       <div class="ab-stat">
         <div class="ab-n">4.8</div>
-        <div class="ab-l">Google rating</div>
+        <div class="ab-l">Google Rating</div>
       </div>
       <div class="ab-stat">
         <div class="ab-n">6+</div>
-        <div class="ab-l">Expert artists</div>
+        <div class="ab-l">Expert Artists</div>
       </div>
     </div>
   </div>
-  <div class="ab-right rvr">
-    <!-- Precision SVG art — no images -->
-    <svg width="380" height="420" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1">
+  <div class="ab-right rv-r">
+    <svg width="360" height="400" viewBox="0 0 360 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:1;">
       <defs>
-        <pattern id="abgr" width="44" height="44" patternUnits="userSpaceOnUse">
-          <path d="M 44 0 L 0 0 0 44" fill="none" stroke="rgba(201,169,110,0.07)" stroke-width="0.5"/>
+        <pattern id="pg" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(196,161,90,0.06)" stroke-width="0.5"/>
         </pattern>
-        <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="rgba(201,169,110,0.12)"/>
-          <stop offset="100%" stop-color="rgba(201,169,110,0)"/>
+        <radialGradient id="rg" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="rgba(196,161,90,0.08)"/>
+          <stop offset="100%" stop-color="rgba(196,161,90,0)"/>
         </radialGradient>
       </defs>
-      <rect width="380" height="420" fill="url(#abgr)"/>
-      <ellipse cx="190" cy="210" rx="190" ry="210" fill="url(#centerGlow)"/>
-
-      <!-- Large spade -->
-      <text x="190" y="272" text-anchor="middle" font-family="serif" font-size="200" fill="rgba(201,169,110,0.06)" letter-spacing="-10">♠</text>
-
-      <!-- Precision rings -->
-      <circle cx="190" cy="190" r="140" stroke="rgba(201,169,110,0.10)" stroke-width="0.5" fill="none" stroke-dasharray="5 10"/>
-      <circle cx="190" cy="190" r="108" stroke="rgba(201,169,110,0.07)" stroke-width="0.5" fill="none"/>
-      <circle cx="190" cy="190" r="170" stroke="rgba(201,169,110,0.04)" stroke-width="0.5" fill="none" stroke-dasharray="2 14"/>
-
-      <!-- Scissors abstract — luxury editorial -->
-      <g stroke="rgba(201,169,110,0.32)" stroke-width="1.2" stroke-linecap="round" transform="translate(108,52)">
-        <circle cx="17" cy="17" r="14" fill="none"/>
-        <circle cx="55" cy="55" r="14" fill="none"/>
-        <line x1="26" y1="26" x2="138" y2="138"/>
-        <line x1="46" y1="26" x2="-36" y2="108"/>
-        <!-- Screw detail -->
-        <circle cx="36" cy="36" r="3" fill="rgba(201,169,110,0.4)" stroke="none"/>
+      <rect width="360" height="400" fill="url(#pg)"/>
+      <ellipse cx="180" cy="200" rx="180" ry="200" fill="url(#rg)"/>
+      <text x="180" y="262" text-anchor="middle" font-family="Georgia,serif" font-size="188" fill="rgba(196,161,90,0.05)" letter-spacing="-8">♠</text>
+      <circle cx="180" cy="180" r="132" stroke="rgba(196,161,90,0.08)" stroke-width="0.5" fill="none" stroke-dasharray="4 10"/>
+      <circle cx="180" cy="180" r="100" stroke="rgba(196,161,90,0.06)" stroke-width="0.5" fill="none"/>
+      <circle cx="180" cy="180" r="160" stroke="rgba(196,161,90,0.04)" stroke-width="0.5" fill="none" stroke-dasharray="2 12"/>
+      <g stroke="rgba(196,161,90,0.28)" stroke-width="1" stroke-linecap="round" transform="translate(102,48)">
+        <circle cx="16" cy="16" r="12" fill="none"/>
+        <circle cx="52" cy="52" r="12" fill="none"/>
+        <line x1="24" y1="24" x2="130" y2="130"/>
+        <line x1="44" y1="24" x2="-34" y2="104"/>
+        <circle cx="34" cy="34" r="2.5" fill="rgba(196,161,90,0.35)" stroke="none"/>
       </g>
-
-      <!-- Corner registration marks -->
-      <g stroke="rgba(201,169,110,0.28)" stroke-width="0.5">
-        <path d="M 22 22 L 22 48 M 22 22 L 48 22"/>
-        <path d="M 358 22 L 358 48 M 358 22 L 332 22"/>
-        <path d="M 22 398 L 22 372 M 22 398 L 48 398"/>
-        <path d="M 358 398 L 358 372 M 358 398 L 332 398"/>
+      <g stroke="rgba(196,161,90,0.22)" stroke-width="0.5">
+        <path d="M 20 20 L 20 44 M 20 20 L 44 20"/>
+        <path d="M 340 20 L 340 44 M 340 20 L 316 20"/>
+        <path d="M 20 380 L 20 356 M 20 380 L 44 380"/>
+        <path d="M 340 380 L 340 356 M 340 380 L 316 380"/>
       </g>
-
-      <!-- Fine horizontal data lines -->
-      <g stroke="rgba(201,169,110,0.05)" stroke-width="0.5">
-        <line x1="0" y1="320" x2="380" y2="320"/>
-        <line x1="0" y1="336" x2="380" y2="336"/>
-        <line x1="0" y1="352" x2="380" y2="352"/>
-        <line x1="0" y1="368" x2="380" y2="368"/>
-      </g>
-
-      <!-- Gold apex dot -->
-      <circle cx="190" cy="52" r="3.5" fill="rgba(201,169,110,0.6)"/>
-      <circle cx="190" cy="52" r="9" stroke="rgba(201,169,110,0.22)" stroke-width="0.5" fill="none"/>
-      <circle cx="190" cy="52" r="16" stroke="rgba(201,169,110,0.08)" stroke-width="0.5" fill="none"/>
+      <circle cx="180" cy="50" r="3" fill="rgba(196,161,90,0.5)"/>
+      <circle cx="180" cy="50" r="8" stroke="rgba(196,161,90,0.18)" stroke-width="0.5" fill="none"/>
+      <circle cx="180" cy="50" r="14" stroke="rgba(196,161,90,0.07)" stroke-width="0.5" fill="none"/>
     </svg>
   </div>
 </section>
 
-<!-- ── PROCESS ── -->
-<section id="process" class="sec">
-  <div class="proc-inner">
-    <div class="rv">
-      <span class="sec-lbl">How it works</span>
-      <h2 class="sec-h">The <em>Experience</em></h2>
+<!-- PROCESS -->
+<section id="process" class="rv">
+  <span class="sec-eyebrow">How it works</span>
+  <h2 class="sec-heading">The <em>Experience</em></h2>
+  <div class="proc-grid rv d2">
+    <div class="proc-step">
+      <span class="proc-n">01</span>
+      <h3 class="proc-t">Arrive &amp; Consult</h3>
+      <p class="proc-d">We begin every visit with a genuine conversation about your vision, lifestyle, and what makes you feel most yourself.</p>
     </div>
-    <div class="proc-steps rv d2">
-      <div class="proc-step">
-        <span class="proc-n">01</span>
-        <h3 class="proc-t">Arrive &amp; Consult</h3>
-        <p class="proc-d">We begin every visit with a genuine conversation about your vision, lifestyle, and what makes you feel most yourself.</p>
-      </div>
-      <div class="proc-step">
-        <span class="proc-n">02</span>
-        <h3 class="proc-t">Craft &amp; Create</h3>
-        <p class="proc-d">Our artists execute with absolute precision — no rushing, no corners cut. Pure technical mastery applied to your vision.</p>
-      </div>
-      <div class="proc-step">
-        <span class="proc-n">03</span>
-        <h3 class="proc-t">Refine &amp; Perfect</h3>
-        <p class="proc-d">Every detail is inspected. Every line is checked. Every edge is deliberate. We simply do not stop until it is right.</p>
-      </div>
-      <div class="proc-step">
-        <span class="proc-n">04</span>
-        <h3 class="proc-t">Leave Elevated</h3>
-        <p class="proc-d">Walk out with confidence you can feel. Leave looking and feeling like the undeniable best version of yourself.</p>
-      </div>
+    <div class="proc-step">
+      <span class="proc-n">02</span>
+      <h3 class="proc-t">Craft &amp; Create</h3>
+      <p class="proc-d">Our artists execute with absolute precision — no rushing, no corners cut. Pure technical mastery applied to your vision.</p>
+    </div>
+    <div class="proc-step">
+      <span class="proc-n">03</span>
+      <h3 class="proc-t">Refine &amp; Perfect</h3>
+      <p class="proc-d">Every detail is inspected. Every line is checked. Every edge is deliberate. We simply do not stop until it is right.</p>
+    </div>
+    <div class="proc-step">
+      <span class="proc-n">04</span>
+      <h3 class="proc-t">Leave Elevated</h3>
+      <p class="proc-d">Walk out with confidence you can feel. Leave looking and feeling like the undeniable best version of yourself.</p>
     </div>
   </div>
 </section>
 
-<!-- ── GALLERY ── -->
+<!-- GALLERY -->
 <section id="gallery">
   <div class="gal-head rv">
-    <span class="sec-lbl">Portfolio</span>
-    <h2 class="sec-h">The <em>Work</em></h2>
+    <span class="sec-eyebrow">Portfolio</span>
+    <h2 class="sec-heading">The <em>Work</em></h2>
   </div>
   <div class="gal-grid rv d1">
-    <div class="g-item">
-      <div class="g-fill gf1">
-        <div class="g-pat">
+    <div class="g-cell">
+      <div class="g-bg gb1">
+        <div class="g-pattern">
           <svg width="100%" height="100%">
-            <defs><pattern id="gp1" width="64" height="64" patternUnits="userSpaceOnUse"><circle cx="32" cy="32" r="1.2" fill="rgba(201,169,110,0.14)"/><path d="M0 32 L64 32 M32 0 L32 64" stroke="rgba(201,169,110,0.04)" stroke-width="0.5"/></pattern></defs>
+            <defs><pattern id="gp1" width="60" height="60" patternUnits="userSpaceOnUse"><circle cx="30" cy="30" r="1" fill="rgba(196,161,90,0.12)"/><path d="M0 30 L60 30 M30 0 L30 60" stroke="rgba(196,161,90,0.03)" stroke-width="0.5"/></pattern></defs>
             <rect width="100%" height="100%" fill="url(#gp1)"/>
-            <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-size="96" fill="rgba(201,169,110,0.06)" font-family="serif">✂</text>
+            <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-size="88" fill="rgba(196,161,90,0.05)" font-family="serif">✂</text>
           </svg>
         </div>
       </div>
-      <div class="g-over"></div>
-      <span class="g-lbl">Precision Fades</span>
+      <div class="g-overlay"></div>
+      <span class="g-label">Precision Fades</span>
     </div>
-    <div class="g-item">
-      <div class="g-fill gf2">
-        <div class="g-pat">
+    <div class="g-cell">
+      <div class="g-bg gb2">
+        <div class="g-pattern">
           <svg width="100%" height="100%">
-            <defs><pattern id="gp2" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M16 0 L32 16 L16 32 L0 16Z" fill="none" stroke="rgba(201,169,110,0.07)" stroke-width="0.5"/></pattern></defs>
+            <defs><pattern id="gp2" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M15 0 L30 15 L15 30 L0 15Z" fill="none" stroke="rgba(196,161,90,0.06)" stroke-width="0.5"/></pattern></defs>
             <rect width="100%" height="100%" fill="url(#gp2)"/>
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="64" fill="rgba(201,169,110,0.08)" font-family="serif">♠</text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="58" fill="rgba(196,161,90,0.07)" font-family="serif">♠</text>
           </svg>
         </div>
       </div>
-      <div class="g-over"></div>
-      <span class="g-lbl">Hair Colour</span>
+      <div class="g-overlay"></div>
+      <span class="g-label">Hair Colour</span>
     </div>
-    <div class="g-item">
-      <div class="g-fill gf3">
-        <div class="g-pat">
+    <div class="g-cell">
+      <div class="g-bg gb3">
+        <div class="g-pattern">
           <svg width="100%" height="100%">
-            <defs><pattern id="gp3" width="42" height="42" patternUnits="userSpaceOnUse"><circle cx="21" cy="21" r="19" fill="none" stroke="rgba(201,169,110,0.06)" stroke-width="0.5"/></pattern></defs>
+            <defs><pattern id="gp3" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="19" cy="19" r="17" fill="none" stroke="rgba(196,161,90,0.05)" stroke-width="0.5"/></pattern></defs>
             <rect width="100%" height="100%" fill="url(#gp3)"/>
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="56" fill="rgba(201,169,110,0.09)" font-family="serif">✦</text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="48" fill="rgba(196,161,90,0.08)" font-family="serif">✦</text>
           </svg>
         </div>
       </div>
-      <div class="g-over"></div>
-      <span class="g-lbl">Classic Cuts</span>
+      <div class="g-overlay"></div>
+      <span class="g-label">Classic Cuts</span>
     </div>
-    <div class="g-item">
-      <div class="g-fill gf4">
-        <div class="g-pat">
+    <div class="g-cell">
+      <div class="g-bg gb4">
+        <div class="g-pattern">
           <svg width="100%" height="100%">
-            <defs><pattern id="gp4" width="52" height="52" patternUnits="userSpaceOnUse"><line x1="0" y1="26" x2="52" y2="26" stroke="rgba(201,169,110,0.05)" stroke-width="0.5"/><line x1="26" y1="0" x2="26" y2="52" stroke="rgba(201,169,110,0.05)" stroke-width="0.5"/></pattern></defs>
+            <defs><pattern id="gp4" width="48" height="48" patternUnits="userSpaceOnUse"><line x1="0" y1="24" x2="48" y2="24" stroke="rgba(196,161,90,0.04)" stroke-width="0.5"/><line x1="24" y1="0" x2="24" y2="48" stroke="rgba(196,161,90,0.04)" stroke-width="0.5"/></pattern></defs>
             <rect width="100%" height="100%" fill="url(#gp4)"/>
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="56" fill="rgba(201,169,110,0.09)">💈</text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="46" fill="rgba(196,161,90,0.08)">💈</text>
           </svg>
         </div>
       </div>
-      <div class="g-over"></div>
-      <span class="g-lbl">Beard Styling</span>
+      <div class="g-overlay"></div>
+      <span class="g-label">Beard Styling</span>
     </div>
-    <div class="g-item">
-      <div class="g-fill gf5">
-        <div class="g-pat">
+    <div class="g-cell">
+      <div class="g-bg gb5">
+        <div class="g-pattern">
           <svg width="100%" height="100%">
-            <defs><pattern id="gp5" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M0 0 L48 48 M48 0 L0 48" stroke="rgba(201,169,110,0.05)" stroke-width="0.5"/></pattern></defs>
+            <defs><pattern id="gp5" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M0 0 L44 44 M44 0 L0 44" stroke="rgba(196,161,90,0.04)" stroke-width="0.5"/></pattern></defs>
             <rect width="100%" height="100%" fill="url(#gp5)"/>
-            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="52" fill="rgba(201,169,110,0.09)" font-family="serif">◈</text>
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="44" fill="rgba(196,161,90,0.08)" font-family="serif">◈</text>
           </svg>
         </div>
       </div>
-      <div class="g-over"></div>
-      <span class="g-lbl">Treatments</span>
+      <div class="g-overlay"></div>
+      <span class="g-label">Treatments</span>
     </div>
   </div>
-  <p class="gal-ig">Follow <a href="#">@spadestudiedelta</a> on TikTok &amp; Instagram</p>
+  <p class="gal-footer">Follow <a href="#">@spadestudiedelta</a> on TikTok &amp; Instagram</p>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-<section id="testimonials" class="sec">
-  <div class="t-wrap rv">
-    <span class="sec-lbl">Client voices</span>
-    <h2 class="sec-h">What They <em>Say</em></h2>
-    <div class="t-slides-wrap">
-      <div class="t-slides" id="tSlides">
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="t-inner rv">
+    <span class="sec-eyebrow">Client Voices</span>
+    <h2 class="sec-heading">What They <em>Say</em></h2>
+    <div class="t-slider-wrap">
+      <div class="t-track" id="tTrack">
         <div class="t-slide">
-          <div class="t-q">"</div>
+          <div class="t-open-quote">"</div>
           <div class="t-stars">★★★★★</div>
           <p class="t-body">Ishant is an exceptional hair colour artist. He took the time to truly understand what I wanted and recommended the perfect shade. The result was beyond anything I imagined possible.</p>
-          <div class="t-auth">Manmeet Kaur &nbsp;·&nbsp; 2 months ago</div>
+          <div class="t-author">Manmeet Kaur &nbsp;·&nbsp; 2 months ago</div>
         </div>
         <div class="t-slide">
-          <div class="t-q">"</div>
+          <div class="t-open-quote">"</div>
           <div class="t-stars">★★★★★</div>
           <p class="t-body">I was genuinely doubtful about the colour change, but Ishaant understood my vision with such precision. I got the exact result I had wanted for years. Truly transformative work.</p>
-          <div class="t-auth">Arshmeet Kaur &nbsp;·&nbsp; 1 month ago</div>
+          <div class="t-author">Arshmeet Kaur &nbsp;·&nbsp; 1 month ago</div>
         </div>
         <div class="t-slide">
-          <div class="t-q">"</div>
+          <div class="t-open-quote">"</div>
           <div class="t-stars">★★★★★</div>
           <p class="t-body">Akash is honestly one of the finest barbers I have ever encountered anywhere. Meticulous attention to detail, genuine patience, and the result is always exactly what I envisioned.</p>
-          <div class="t-auth">Abhishek Rana &nbsp;·&nbsp; 7 months ago</div>
+          <div class="t-author">Abhishek Rana &nbsp;·&nbsp; 7 months ago</div>
         </div>
         <div class="t-slide">
-          <div class="t-q">"</div>
+          <div class="t-open-quote">"</div>
           <div class="t-stars">★★★★★</div>
           <p class="t-body">Prabh really listened and gave the most incredible suggestions. Clean space, exceptional service — I walked out feeling more confident than I have felt in years. My permanent go-to.</p>
-          <div class="t-auth">Inderjit Kaur &nbsp;·&nbsp; 3 months ago</div>
+          <div class="t-author">Inderjit Kaur &nbsp;·&nbsp; 3 months ago</div>
         </div>
         <div class="t-slide">
-          <div class="t-q">"</div>
+          <div class="t-open-quote">"</div>
           <div class="t-stars">★★★★★</div>
           <p class="t-body">Sandeep's kerasmooth treatment was nothing short of flawless. She explained every single step with care and my hair has never looked or felt this incredible. Highly recommended without reservation.</p>
-          <div class="t-auth">Archana Puri &nbsp;·&nbsp; 5 months ago</div>
+          <div class="t-author">Archana Puri &nbsp;·&nbsp; 5 months ago</div>
         </div>
       </div>
     </div>
     <div class="t-dots" id="tDots">
-      <button class="t-dot on" data-i="0"></button>
+      <button class="t-dot active" data-i="0"></button>
       <button class="t-dot" data-i="1"></button>
       <button class="t-dot" data-i="2"></button>
       <button class="t-dot" data-i="3"></button>
       <button class="t-dot" data-i="4"></button>
     </div>
     <div class="t-nav">
-      <button class="t-btn" id="tPr">←</button>
-      <button class="t-btn" id="tNx">→</button>
+      <button class="t-btn" id="tPrev">←</button>
+      <button class="t-btn" id="tNext">→</button>
     </div>
   </div>
 </section>
 
-<!-- ── BOOKING ── -->
+<!-- BOOKING -->
 <section id="booking" class="sec">
-  <div class="bk-glow-1"></div>
-  <div class="bk-glow-2"></div>
-  <div class="bk-ring bk-ring-1"></div>
-  <div class="bk-ring bk-ring-2"></div>
-  <div class="bk-ring bk-ring-3"></div>
-  <div class="bk-wrap rv">
-    <span class="sec-lbl">Ready?</span>
-    <h2 class="bk-h">Book Your<br><em>Next Cut</em><br>Today</h2>
+  <div class="bk-ambient"></div>
+  <div class="bk-ring"></div>
+  <div class="bk-inner rv">
+    <span class="sec-eyebrow">Ready?</span>
+    <h2 class="bk-heading">Book Your<br><em>Next Cut</em><br>Today</h2>
     <p class="bk-sub">Walk-ins welcome. Appointments preferred.<br>Call us or visit the studio in Sunshine Hills, Delta.</p>
     <a href="tel:7786819005" class="bk-cta">Call to Book &ensp;→</a>
-    <div class="bk-details">
-      <div class="bk-det">
-        <span class="bk-dlbl">Location</span>
-        <span class="bk-dval">6431 120 St, Delta BC</span>
+    <div class="bk-meta">
+      <div class="bk-item">
+        <span class="bk-label">Location</span>
+        <span class="bk-value">6431 120 St, Delta BC</span>
       </div>
-      <div class="bk-det">
-        <span class="bk-dlbl">Phone</span>
-        <span class="bk-dval">(778) 681-9005</span>
+      <div class="bk-item">
+        <span class="bk-label">Phone</span>
+        <span class="bk-value">(778) 681-9005</span>
       </div>
-      <div class="bk-det">
-        <span class="bk-dlbl">Hours</span>
-        <span class="bk-dval">Mon – Sun · 9 AM onwards</span>
+      <div class="bk-item">
+        <span class="bk-label">Hours</span>
+        <span class="bk-value">Mon – Sun · 9 AM onwards</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-  <div class="ft-top">
+  <div class="ft-grid">
     <div>
-      <a href="#" class="ft-brand"><span>♠</span> Spade Hair Studio</a>
-      <p class="ft-tag">Precision Cuts. Elevated Style.</p>
-      <div class="ft-socs">
+      <a href="#" class="ft-logo"><span>♠</span> Spade Hair Studio</a>
+      <p class="ft-tagline">Precision Cuts. Elevated Style.</p>
+      <div class="ft-socials">
         <a href="#" class="ft-soc">ig</a>
         <a href="#" class="ft-soc">tt</a>
         <a href="https://maps.google.com/?q=6431+120+St+Delta+BC" target="_blank" class="ft-soc">gm</a>
@@ -1380,7 +1372,7 @@ footer {
       <p>6431 120 St<br>Delta, BC V4E 3G3<br>Sunshine Hills Centre<br><br>(778) 681-9005<br><br>Mon – Sun · 9 AM onwards</p>
     </div>
   </div>
-  <div class="ft-bot">
+  <div class="ft-bottom">
     <p class="ft-copy">© 2025 Spade Hair Studio · Delta, British Columbia</p>
     <p class="ft-rating">★ 4.8 · 221 Reviews on Google</p>
   </div>
@@ -1400,135 +1392,125 @@ document.addEventListener('mousemove', e => {
 document.addEventListener('mousedown', () => cur.classList.add('click'));
 document.addEventListener('mouseup', () => cur.classList.remove('click'));
 
-(function loopCur() {
-  rx += (mx - rx) * 0.095;
-  ry += (my - ry) * 0.095;
+(function loopR() {
+  rx += (mx - rx) * 0.085;
+  ry += (my - ry) * 0.085;
   curR.style.left = rx + 'px';
   curR.style.top = ry + 'px';
-  requestAnimationFrame(loopCur);
+  requestAnimationFrame(loopR);
 })();
 
-document.querySelectorAll('a, button, .sv-card, .g-item, .proc-step').forEach(el => {
+document.querySelectorAll('a, button, .sv-card, .g-cell, .proc-step').forEach(el => {
   el.addEventListener('mouseenter', () => { curR.classList.add('hover'); cur.classList.add('hover'); });
   el.addEventListener('mouseleave', () => { curR.classList.remove('hover'); cur.classList.remove('hover'); });
 });
-document.querySelectorAll('p, .sv-desc, .proc-d, .ab-p').forEach(el => {
+document.querySelectorAll('p, .sv-body, .proc-d, .ab-p, .t-body').forEach(el => {
   el.addEventListener('mouseenter', () => curR.classList.add('text'));
   el.addEventListener('mouseleave', () => curR.classList.remove('text'));
 });
 
-/* ── CANVAS — Precision Particle Field ── */
+/* ── CANVAS PARTICLE FIELD ── */
 const canvas = document.getElementById('bg');
 const ctx = canvas.getContext('2d');
 let W, H, pts = [];
-let mouseX = -1000, mouseY = -1000;
+let mX = -1000, mY = -1000;
 
-document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+document.addEventListener('mousemove', e => { mX = e.clientX; mY = e.clientY; });
 
 function resize() {
   W = canvas.width = canvas.offsetWidth;
   H = canvas.height = canvas.offsetHeight;
-  initPts();
+  build();
 }
 
-function initPts() {
+function build() {
   pts = [];
-  const n = Math.floor(W * H / 11000);
-  for (let i = 0; i < n; i++) {
-    pts.push({
-      x: Math.random() * W, y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.14,
-      vy: (Math.random() - 0.5) * 0.14,
-      r: Math.random() * 1.0 + 0.3,
-      o: Math.random() * 0.3 + 0.08,
-      ox: 0, oy: 0
-    });
-  }
+  const n = Math.floor(W * H / 13000);
+  for (let i = 0; i < n; i++) pts.push({
+    x: Math.random() * W, y: Math.random() * H,
+    vx: (Math.random() - 0.5) * 0.12,
+    vy: (Math.random() - 0.5) * 0.12,
+    r:  Math.random() * 0.9 + 0.25,
+    o:  Math.random() * 0.25 + 0.06,
+    ox: 0, oy: 0
+  });
 }
 
-function draw() {
+function frame() {
   ctx.clearRect(0, 0, W, H);
-
   pts.forEach(p => {
-    // Mouse repulsion — elegant physics
-    const dx = p.x - mouseX, dy = p.y - mouseY;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    if (dist < 120) {
-      const force = (120 - dist) / 120 * 0.6;
-      p.ox += dx / dist * force;
-      p.oy += dy / dist * force;
+    const dx = p.x - mX, dy = p.y - mY;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d < 110) {
+      const f = (110 - d) / 110 * 0.5;
+      p.ox += dx / d * f; p.oy += dy / d * f;
     }
-    p.ox *= 0.88; p.oy *= 0.88;
-    p.x += p.vx + p.ox;
-    p.y += p.vy + p.oy;
+    p.ox *= 0.87; p.oy *= 0.87;
+    p.x += p.vx + p.ox; p.y += p.vy + p.oy;
     if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
     if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
-
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(201,169,110,${p.o})`;
+    ctx.fillStyle = `rgba(196,161,90,${p.o})`;
     ctx.fill();
   });
-
-  // Connections
   for (let i = 0; i < pts.length; i++) {
     for (let j = i + 1; j < pts.length; j++) {
-      const dx = pts[i].x - pts[j].x;
-      const dy = pts[i].y - pts[j].y;
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
       const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 108) {
+      if (d < 100) {
         ctx.beginPath();
         ctx.moveTo(pts[i].x, pts[i].y);
         ctx.lineTo(pts[j].x, pts[j].y);
-        ctx.strokeStyle = `rgba(201,169,110,${0.055 * (1 - d / 108)})`;
-        ctx.lineWidth = 0.4;
+        ctx.strokeStyle = `rgba(196,161,90,${0.045 * (1 - d / 100)})`;
+        ctx.lineWidth = 0.35;
         ctx.stroke();
       }
     }
   }
-  requestAnimationFrame(draw);
+  requestAnimationFrame(frame);
 }
 window.addEventListener('resize', resize);
-resize(); draw();
+resize(); frame();
 
 /* ── LOADER ── */
 window.addEventListener('load', () =>
-  setTimeout(() => document.getElementById('loader').classList.add('gone'), 2000)
+  setTimeout(() => document.getElementById('loader').classList.add('gone'), 2200)
 );
 
-/* ── NAV ── */
+/* ── NAV SCROLL ── */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 80));
+window.addEventListener('scroll', () =>
+  nav.classList.toggle('scrolled', scrollY > 60)
+, { passive: true });
 
 /* ── REVEAL ── */
-const observer = new IntersectionObserver(entries => {
+const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-}, { threshold: 0.08 });
-document.querySelectorAll('.rv, .rvl, .rvr').forEach(el => observer.observe(el));
+}, { threshold: 0.07 });
+document.querySelectorAll('.rv, .rv-l, .rv-r').forEach(el => obs.observe(el));
 
 /* ── TESTIMONIALS ── */
-let tCur = 0;
-const tSlides = document.getElementById('tSlides');
+let tIdx = 0;
+const tTrack = document.getElementById('tTrack');
 const tDots = document.querySelectorAll('.t-dot');
-const TLEN = 5;
+const TOTAL = 5;
 
-function goTo(i) {
-  tCur = ((i % TLEN) + TLEN) % TLEN;
-  tSlides.style.transform = `translateX(${-tCur * 100}%)`;
-  tDots.forEach((d, j) => d.classList.toggle('on', j === tCur));
+function slide(to) {
+  tIdx = ((to % TOTAL) + TOTAL) % TOTAL;
+  tTrack.style.transform = `translateX(${-tIdx * 100}%)`;
+  tDots.forEach((d, i) => d.classList.toggle('active', i === tIdx));
 }
-tDots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
-document.getElementById('tNx').addEventListener('click', () => goTo(tCur + 1));
-document.getElementById('tPr').addEventListener('click', () => goTo(tCur - 1));
-setInterval(() => goTo(tCur + 1), 5500);
+tDots.forEach(d => d.addEventListener('click', () => slide(+d.dataset.i)));
+document.getElementById('tNext').addEventListener('click', () => slide(tIdx + 1));
+document.getElementById('tPrev').addEventListener('click', () => slide(tIdx - 1));
+setInterval(() => slide(tIdx + 1), 5800);
 
 /* ── PARALLAX ── */
 const hwm = document.getElementById('hwm');
 window.addEventListener('scroll', () => {
-  const sy = scrollY;
-  if (hwm && sy < innerHeight) {
-    hwm.style.transform = `translateY(calc(-50% + ${sy * 0.14}px))`;
-  }
+  if (scrollY < innerHeight)
+    hwm.style.transform = `translateY(calc(-50% + ${scrollY * 0.12}px))`;
 }, { passive: true });
 </script>
 </body>
